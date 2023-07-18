@@ -7,9 +7,11 @@
 
 import Foundation
 
+protocol StockServerProtocol {
+    func fetchData() async throws -> [Stocks]
+}
 
-
-class StockServer {
+class StockServer: StockServerProtocol {
     
     
     func fetchData() async throws -> [Stocks] {

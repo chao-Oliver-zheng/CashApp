@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		6443EA432A62027A005A98AD /* ItemCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443EA422A62027A005A98AD /* ItemCells.swift */; };
 		6443EA452A620BAB005A98AD /* SecondPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6443EA442A620BAB005A98AD /* SecondPageView.swift */; };
+		6443EA472A639FC6005A98AD /* getCashAppSuccess.json in Resources */ = {isa = PBXBuildFile; fileRef = 6482FF5A2A5F5A4C00A29404 /* getCashAppSuccess.json */; };
 		6482FF2E2A5F45F200A29404 /* CashAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF2D2A5F45F200A29404 /* CashAppApp.swift */; };
 		6482FF302A5F45F200A29404 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF2F2A5F45F200A29404 /* ContentView.swift */; };
 		6482FF322A5F45F700A29404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6482FF312A5F45F700A29404 /* Assets.xcassets */; };
@@ -17,10 +18,10 @@
 		6482FF492A5F45F700A29404 /* CashAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF482A5F45F700A29404 /* CashAppUITests.swift */; };
 		6482FF4B2A5F45F700A29404 /* CashAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF4A2A5F45F700A29404 /* CashAppUITestsLaunchTests.swift */; };
 		6482FF582A5F46E300A29404 /* Stock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF572A5F46E300A29404 /* Stock.swift */; };
-		6482FF5B2A5F5A6500A29404 /* JsonData.json in Resources */ = {isa = PBXBuildFile; fileRef = 6482FF5A2A5F5A4C00A29404 /* JsonData.json */; };
 		6482FF5E2A5F5AD400A29404 /* StockServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF5D2A5F5AD400A29404 /* StockServer.swift */; };
 		6482FF612A5F5C3000A29404 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF602A5F5C3000A29404 /* APIError.swift */; };
 		6482FF632A5F5F5600A29404 /* StockServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6482FF622A5F5F5600A29404 /* StockServerModel.swift */; };
+		649A0EA12A6607090048FB06 /* getCashAppFail.json in Resources */ = {isa = PBXBuildFile; fileRef = 649A0EA02A6607090048FB06 /* getCashAppFail.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,10 +55,11 @@
 		6482FF482A5F45F700A29404 /* CashAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashAppUITests.swift; sourceTree = "<group>"; };
 		6482FF4A2A5F45F700A29404 /* CashAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CashAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		6482FF572A5F46E300A29404 /* Stock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stock.swift; sourceTree = "<group>"; };
-		6482FF5A2A5F5A4C00A29404 /* JsonData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = JsonData.json; sourceTree = "<group>"; };
+		6482FF5A2A5F5A4C00A29404 /* getCashAppSuccess.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = getCashAppSuccess.json; sourceTree = "<group>"; };
 		6482FF5D2A5F5AD400A29404 /* StockServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockServer.swift; sourceTree = "<group>"; };
 		6482FF602A5F5C3000A29404 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		6482FF622A5F5F5600A29404 /* StockServerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StockServerModel.swift; sourceTree = "<group>"; };
+		649A0EA02A6607090048FB06 /* getCashAppFail.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = getCashAppFail.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +150,8 @@
 		6482FF592A5F594400A29404 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				6482FF5A2A5F5A4C00A29404 /* JsonData.json */,
+				6482FF5A2A5F5A4C00A29404 /* getCashAppSuccess.json */,
+				649A0EA02A6607090048FB06 /* getCashAppFail.json */,
 			);
 			path = JSON;
 			sourceTree = "<group>";
@@ -293,7 +296,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				6482FF352A5F45F700A29404 /* Preview Assets.xcassets in Resources */,
-				6482FF5B2A5F5A6500A29404 /* JsonData.json in Resources */,
 				6482FF322A5F45F700A29404 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -302,6 +304,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6443EA472A639FC6005A98AD /* getCashAppSuccess.json in Resources */,
+				649A0EA12A6607090048FB06 /* getCashAppFail.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

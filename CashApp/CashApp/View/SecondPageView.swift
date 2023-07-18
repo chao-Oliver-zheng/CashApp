@@ -9,108 +9,73 @@ import SwiftUI
 
 struct SecondPageView: View {
     
-    @StateObject var viewModel = StockServerMode()
     var stocks: Stocks
     @State var total: Double = 0.0
     @Binding var path: NavigationPath
+    @ObservedObject var viewModel: StockServerMode
     
     var body: some View {
-        VStack{
-            Button(action: { path = NavigationPath() }) {
-                
-                Text("home")
-            }
-            Spacer()
-            if let _ = stocks.quantity {
-                Text("\(stocks.name) total is \(stocks.currency)\(String(format: "%.2f", total))")
-                    .onAppear{ calTrade() }
-            } else {
-                Text("Buy something")
-            }
-            
-            List {
-                ForEach(filteredData , id:\.self){ stock in
-                    
-                    if let hold = stock.quantity {
-                        NavigationLink(value: stock){
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text(stock.ticker)
-                                        .font(.headline)
-                                    Text(stock.name)
-                                        .font(.subheadline)
-                                    HStack{
-                                        Text(stock.currency)
-                                        Text("\(stock.current_price_cents)")
-                                            .font(.subheadline)
-                                    }
-                                    
-                                }
-                                Spacer()
-                                Text("\(hold)")
-                            }
-                        }
-                        .navigationDestination(for: Stocks.self){ item in
-                            SecondPageView(stocks: item, path: $path)
-                            
-                        }
-                        
+        ScrollView{
+            VStack(alignment: .leading){
+                Text("\(stocks.name)")
+                    .font(.headline)
+                Text("\(stocks.currency) \(String(format: "%.2f", (Double(Double(stocks.current_price_cents)/100))))")
+                    .font(.subheadline)
+                    .padding(.vertical)
+                HStack{
+                    VStack{
+                        Text("Shared")
+                        Text("\(stocks.quantity ?? 0)")
+                    }
+                    Spacer()
+                    VStack{
+                        Text("Market Value")
+                        Text("\(String(format: "%.2f", Double(Double(total )/100)))")
+                            .onAppear{ calTrade() }
                     }
                 }
-                
-                ForEach(viewModel.stocks, id:\.self){ stock in
-                    if let _ = stock.quantity {}
-                    else{
-                        NavigationLink(value: stock){
-                            HStack{
-                                VStack(alignment: .leading) {
-                                    Text(stock.ticker)
-                                        .font(.headline)
-                                    Text(stock.name)
-                                        .font(.subheadline)
-                                    HStack{
-                                        Text(stock.currency)
-                                        Text("\(stock.current_price_cents)")
-                                            .font(.subheadline)
-                                    }
-                                }
-                                Spacer()
-                            }
-                        }
-                        .navigationDestination(for: Stocks.self){ item in
-                            SecondPageView(stocks: item, path: $path)
-                            
-                        }
-                    }
-                }
-                .listStyle(.plain)
-                .edgesIgnoringSafeArea(.all)
             }
-            
-            
-            
+            HStack{
+                Spacer()
+                Button(action: {} ){
+                    Text("Trade")
+                }
+                .frame(width: 120, height: 35, alignment: .center)
+                .background(.green)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+                Spacer()
+            }
+            Text("Other Stocks you may like")
+                .padding(.vertical)
         }
-    }
+        .padding()
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color.black)
+        .foregroundColor(.white)
         
-    private var filteredData: [Stocks] {
-        viewModel.stocks.filter { stock in
-            
-            !stocks.name.contains(stock.name)
-        }
+        
     }
     
-    private func calTrade(){
-        
-        let currentPrice = stocks.current_price_cents
-        let quantity = stocks.quantity
-        self.total = Double(currentPrice * quantity!)
-       
+    private var filteredData: [Stocks] {
+        return viewModel.stocks.filter { $0.quantity == nil}
     }
+    private func calTrade(){
+        if stocks.quantity != nil{
+            let currentPrice = stocks.current_price_cents
+            let quantity = stocks.quantity
+            self.total = Double(currentPrice * quantity!)
+        }else{
+            self.total = 0
+        }
+          
+       }
+    
     
 }
-//
+
 //struct SecondPageView_Previews: PreviewProvider {
 //    static var previews: some View {
-//        SecondPageView()
+//        SecondPageView(stocks: <#Stocks#>, path: NavigationPath())
 //    }
 //}

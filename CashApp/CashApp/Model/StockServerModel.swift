@@ -13,27 +13,16 @@ class StockServerMode: ObservableObject {
     @Published var stocks: [Stocks] = []
     @Published var isLoading: Bool = false
     @Published var errorMessage: String = ""
-    private let service = StockServer()
+    //@publish var state: APIState = .init
+    let service: StockServerProtocol
     
-    private let updateInterval: TimeInterval = 5 // Update interval in seconds
-    private var updateTimer: Timer?
-    init() {
-            startUpdating()
+   // private let service = StockServer()
+    init(service: StockServerProtocol = StockServer()) {
+        self.service = service
+        Task {
+            await getData()
         }
-    deinit {
-            stopUpdating()
-        }
-    private func startUpdating() {
-        updateTimer = Timer.scheduledTimer(withTimeInterval: updateInterval, repeats: true) { [weak self] _ in
-            self?.getData()
-        }
-        
-        updateTimer?.fire()
     }
-    private func stopUpdating() {
-           updateTimer?.invalidate()
-           updateTimer = nil
-       }
     
     @MainActor func getData() {
         isLoading = true
@@ -41,6 +30,7 @@ class StockServerMode: ObservableObject {
             do{
                 let stocks: [Stocks] = try await service.fetchData()
                 self.stocks = stocks
+                isLoading = false
             } catch {
                 if  let error = error as? APIError  {
                     print(error.description)
@@ -50,7 +40,7 @@ class StockServerMode: ObservableObject {
                     errorMessage = error.localizedDescription
                 }
             }
-            isLoading = false
+            
         }
     }
     
