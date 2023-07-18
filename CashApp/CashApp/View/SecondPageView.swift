@@ -22,6 +22,8 @@ struct SecondPageView: View {
                 Text("\(stocks.currency) \(String(format: "%.2f", (Double(Double(stocks.current_price_cents)/100))))")
                     .font(.subheadline)
                     .padding(.vertical)
+                Text("Your Position")
+                    .padding(.vertical)
                 HStack{
                     VStack{
                         Text("Shared")

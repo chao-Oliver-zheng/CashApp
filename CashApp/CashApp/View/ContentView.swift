@@ -117,7 +117,6 @@ struct ContentView: View {
     private var total: String {
         var cur: Double = 0.0
         for obj in  viewModel.stocks{
-            print(obj.current_price_cents)
             if let qua = obj.quantity {
                 cur += (Double(obj.current_price_cents) * Double(qua))
             }else{ }
