@@ -100,8 +100,6 @@ struct ContentView: View {
             .background(Color.black)
             .foregroundColor(.white)
         }
-        
-        
     }
        
     private var filteredData: [Stocks] {

@@ -23,6 +23,7 @@ struct SecondPageView: View {
                     .font(.subheadline)
                     .padding(.vertical)
                 Text("Your Position")
+                    .font(.system(size: 25))
                     .padding(.vertical)
                 HStack{
                     VStack{
